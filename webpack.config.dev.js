@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
@@ -22,7 +23,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html'
-        })
+        }),
+        new OpenBrowserPlugin({ url: 'http://localhost:3333' })
     ],
     resolve: {
         extensions: ['', '.js']

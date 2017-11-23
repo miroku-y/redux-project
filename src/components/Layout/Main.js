@@ -95,7 +95,7 @@ class Main extends React.Component{
     }
     render(){
         const cloums = data[0].children;
-        console.warn(this.props);
+        // console.warn(this.props);
         // const NavData = getRouteData('BasicLayout');
         // console.log(NavData,'\\\\\\\\\\');
         const {
