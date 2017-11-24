@@ -1,8 +1,3 @@
 import { ajaxApi } from '../utils/index'
 
-export function getFoodListFun(data){
-    return ajaxApi('/data/dish_getbtpage.php',{
-        method:'post',
-        data:data,
-    });
-}
+export const getFoodListFun = (data) => ajaxApi('/data/dish_getbtpage.php',{method:'get',data:data,});

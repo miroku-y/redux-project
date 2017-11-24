@@ -202,6 +202,8 @@ function mapDispatchToProps(dispatch){
                     }
                 })
             })
+            // console.log(window.localStorage);
+            // window.localStorage.setItem('menu',{firstIndex:pathname,secondIndex:item.path})
             dispatch({type:params})
         }
     }

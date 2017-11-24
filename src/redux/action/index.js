@@ -14,9 +14,11 @@ export const nextFormPage = {
 }
 
 //请求接口
-export const saveReducer = (data) => ({
+export const saveReducer = (data,firstIndex,secondIndex) => ({
     type:'SAVE_REDUCER',
-    data,
+    data:{
+        data,firstIndex,secondIndex
+    },
 })
 // export const getTest = () => async(dispatch,getState) => {
 //     console.log(dispatch,getState,'999999');
@@ -29,7 +31,9 @@ export const saveReducer = (data) => ({
 // 
 //     }
 // }
-export const getTest = () => {
-    const result = servers.getFoodListFun({});
-    console.log(result);
+export const getTest = (dispatch,firstIndex,secondIndex) => {
+    servers.getFoodListFun({}).then((res) => {
+        console.log(res)
+        dispatch(saveReducer(res.data,firstIndex,secondIndex))
+    })
 }

@@ -9,7 +9,7 @@ const initialState = {
     foodList:[],
 }
 export const reducer = (state = initialState,action) => {
-    console.log(action,'111')
+    // console.log(action,'111')
     
     //F5刷新时用
     if(action.type.hasOwnProperty('lineHeight')){
@@ -18,14 +18,6 @@ export const reducer = (state = initialState,action) => {
             secondIndex:action.type.type,
             firstIndex:action.type.lineHeight
         }
-    }else if(action.type.hasOwnProperty('data')){
-        //更新数据
-        console.log('准备请求数据');
-        return {
-            ...state,
-            foodList:action.type.data,
-        }
-
     }
     switch (action.type){
         case 'CHANGE_TEXT':
@@ -85,7 +77,16 @@ export const reducer = (state = initialState,action) => {
                 ...state,
                 stepFormPage:action.type
             }
-        
+        //渲染监控页面
+        case 'SAVE_REDUCER':
+        // debugger;
+        console.log(action,'8282828282')
+            return {
+                ...state,
+                firstIndex:action.data.firstIndex,
+                secondIndex:action.data.secondIndex,
+                foodList:action.data.data.list,
+            }
         default:
             return initialState;
     }

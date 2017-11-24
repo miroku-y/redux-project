@@ -57,12 +57,12 @@ function parse(res) {
             throw "服务器返回数据错误";
         }
         if (response.errcode == 40001) {
-             window.localStorage.setItem("token", "");
-             window.location.hash = "/login";
+            window.localStorage.setItem("token", "");
+            window.location.hash = "/login";
             throw "token失效,请刷新页面";
         }
         if (response.errcode == -1) {
-          //  window.localStorage.setItem("token", "");
+            //  window.localStorage.setItem("token", "");
             // window.location.hash = "/login";
             throw response;
         }
