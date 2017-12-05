@@ -28,15 +28,36 @@
             align-items: center;
             li{
                 float: left;
-                width: 15%;
+                // width: 15%;
                 line-height: 4rem;
                 padding-right: 1rem;
                 span{
-                    line-height: 2rem;
+                    line-height: 1.5rem;
                     display: block;
                     color:#595959;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
                 }
             }
+            li:nth-child(2)>span{
+                display: block;
+                height: 50%;
+                width: 85%;
+                overflow: hidden;
+                position: relative;
+                top: .2rem;
+                img{
+                    height:100%;
+                    width:100%;
+                }
+            }
+        }
+        .table_body:hover{
+            background-color:#91D5FF;
+            cursor:pointer;
         }
     }
 }

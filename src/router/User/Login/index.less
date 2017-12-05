@@ -1,0 +1,65 @@
+@keyframes side_in{
+    0%   {margin-left: 100%;}
+    20%  {margin-left: 80%;}
+    40%  {margin-left: 60%;}
+    80%  {margin-left: 20%;}
+    100% {margin-left: 0;}
+}
+.login{
+    animation: side_in .3s;
+    background-color: #fff;
+    height: 100%;
+    overflow: hidden;
+    .container{
+        // background-image:url('/src/images/timg.jpg');
+        background-repeat:no-repeat;
+        background-size: cover;
+        width:96%;
+        margin:0 auto;
+        height: 100%;
+        position: relative;
+        >div{
+            width: 20%;
+            margin: auto;
+            height: 25%;
+            overflow: hidden;
+            background-color:#e6ae48ee;
+            color:#00214073;
+            position: absolute;
+            top: 29%;
+            left: 39%;
+            border-radius: 5px;
+        }
+        .form_group{
+            width: 84%;
+            margin:1rem auto;
+            .group_item{
+                width:100%;
+                height:100%;
+                label{
+                    width: 100%;
+                    display: block;
+                }
+                label>span{
+                    display: inline-block;
+                    width:50%;
+                }
+                label>input{
+                    width:100%;
+                    line-height: 1.3rem;
+                    border: none;
+                }
+                .button{
+                    width: 100%;
+                    display: block;
+                    background-color: #fff;
+                    margin-top: 3rem;
+                    text-align: center;
+                    border-radius: 3px;
+                    line-height: 2rem;
+                    cursor:pointer;
+                }
+            }
+        }
+    }
+}

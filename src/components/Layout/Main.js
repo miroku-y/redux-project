@@ -9,6 +9,8 @@ import BasicForm from '../../router/Form/BasicForm';
 import StepForm from '../../router/Form/StepForm';
 import Confirm from '../../router/Form/Confirm';
 import BasicTable from '../../router/Table/BasicTable';
+import Login from '../../router/User/Login';
+import Register from '../../router/User/Register';
 import Header from './Header';
 import classNames from 'classnames'
 import {Link,Route,Switch,Redirect,BrowserRouter as Router} from 'react-router-dom';
@@ -56,7 +58,7 @@ const data = [
                         component:StepForm,
                         children:[
                             {
-                                path:'confirm',
+                                path:'/step-form/confirm',
                                 component:Confirm
                             }
                         ]
@@ -72,6 +74,23 @@ const data = [
                         name:'基础表格',
                         path:'basic-table',
                         component:BasicTable,
+                    }
+                ]
+            },
+            {
+                name:'User',
+                icon:'users',
+                path:'user',
+                children:[
+                    {
+                        name:'登录页面',
+                        path:'login',
+                        component:Login,
+                    },
+                    {
+                        name:'注册页面',
+                        path:'register',
+                        component:Register,
                     }
                 ]
             }
@@ -95,6 +114,7 @@ class Main extends React.Component{
     }
     render(){
         const cloums = data[0].children;
+        console.log(this.props, "总main页");
         // console.warn(this.props);
         // const NavData = getRouteData('BasicLayout');
         // console.log(NavData,'\\\\\\\\\\');
@@ -121,7 +141,7 @@ class Main extends React.Component{
                                     <li key={item.path}>
                                         <div className={styles.firstIndex_class} onClick={ firstIndexAction.bind(this,item.path)}>
                                             <span className={styles.bg_img}>
-                                                <img src={`./src/images/${item.path}.png`}/>
+                                                <img src={`/src/images/${item.icon}.png`}/>
                                             </span>
                                             {item.name}
                                         </div>
@@ -196,9 +216,23 @@ function mapDispatchToProps(dispatch){
             firstItem.map((item) => {
                 let secondItem = item.children;
                 secondItem.map((secondItem) => {
-                    if(secondItem.path == pathname){
-                        params.type = pathname;
-                        params.lineHeight = item.path;
+                    let thirdItem = secondItem.children;
+                    // debugger;
+                    if (thirdItem != undefined){
+                        if (pathname.indexOf('/') != -1) {
+                            params.type = pathname.slice(0, pathname.indexOf('/'));
+                            params.lineHeight = item.path;
+                        }else{
+                            if (secondItem.path == pathname) {
+                                params.type = pathname;
+                                params.lineHeight = item.path;
+                            } 
+                        }
+                    }else{
+                        if (secondItem.path == pathname) {
+                            params.type = pathname;
+                            params.lineHeight = item.path;
+                        }
                     }
                 })
             })

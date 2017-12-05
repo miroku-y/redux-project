@@ -9,7 +9,7 @@ const initialState = {
     foodList:[],
 }
 export const reducer = (state = initialState,action) => {
-    // console.log(action,'111')
+    console.log(action,'111')
     
     //F5刷新时用
     if(action.type.hasOwnProperty('lineHeight')){
@@ -30,7 +30,7 @@ export const reducer = (state = initialState,action) => {
                 ...state,
                 text:'Hello Hello Hello world',
             }
-
+        //一级菜单
         case 'form':
             return {
                 ...state,
@@ -46,6 +46,12 @@ export const reducer = (state = initialState,action) => {
                 ...state,
                 firstIndex:action.type
             }
+        case 'user':
+            return {
+                ...state,
+                firstIndex:action.type
+            }
+        //二级菜单
         case 'basic-form':
             return {
                 ...state,
@@ -71,6 +77,16 @@ export const reducer = (state = initialState,action) => {
                 ...state,
                 secondIndex:action.type
             }
+        case 'login':
+            return {
+                ...state,
+                secondIndex:action.type
+            }
+        case 'register':
+            return {
+                ...state,
+                secondIndex:action.type
+            }
         //分步表单
         case '/step-form/confirm':
             return {
@@ -80,7 +96,6 @@ export const reducer = (state = initialState,action) => {
         //渲染监控页面
         case 'SAVE_REDUCER':
         // debugger;
-        console.log(action,'8282828282')
             return {
                 ...state,
                 firstIndex:action.data.firstIndex,

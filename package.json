@@ -57,6 +57,8 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.5",
+    "echarts": "^3.8.5",
+    "echarts-for-react": "^2.0.0",
     "moment": "^2.18.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",

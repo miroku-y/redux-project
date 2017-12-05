@@ -4,7 +4,10 @@ import Analysis from '../../router/Dashboard/Analysis';
 import Monitor from '../../router/Dashboard/Monitor';
 import BasicForm from '../../router/Form/BasicForm';
 import StepForm from '../../router/Form/StepForm';
+import Confirm from '../../router/Form/Confirm';
 import BasicTable from '../../router/Table/BasicTable';
+import Login from '../../router/User/Login';
+import Register from '../../router/User/Register';
 import classNames from 'classnames';
 import  { BrowserRouter as StaticRouter, Router, Switch, Route, Link } from 'react-router-dom';
 import  createBrowserHistory from 'history/createBrowserHistory';
@@ -48,7 +51,13 @@ const data = [
                     {
                         name:'分步表单',
                         path:'step-form',
-                        component:StepForm
+                        component: StepForm,
+                        children: [
+                            {
+                                path: 'step-form/confirm',
+                                component: Confirm
+                            },
+                        ]
                     }
                 ]
             },
@@ -61,6 +70,23 @@ const data = [
                         name:'基础表格',
                         path:'basic-table',
                         component:BasicTable,
+                    }
+                ]
+            },
+            {
+                name:'User',
+                icon:'user',
+                path:'User',
+                children:[
+                    {
+                        name:'登录页面',
+                        path:'login',
+                        component:Login,
+                    },
+                    {
+                        name:'注册页面',
+                        path:'register',
+                        component:Register,
                     }
                 ]
             }

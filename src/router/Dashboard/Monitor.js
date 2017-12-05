@@ -31,13 +31,25 @@ class Monitor extends React.Component{
                 <Title text="监控页面！！！"/>
                 <div className={styles.table}>
                     <ul className={styles.table_header}>
-                        <li><span>did</span></li> 
-                        <li><span>img_sm</span></li>
-                        <li><span>name</span></li>
-                        <li><span>price</span></li>
-                        <li><span>detail</span></li>
-                        <li><span>material</span></li>
+                        <li style={{width:'5%'}}><span>DID</span></li> 
+                        <li style={{width:'10%'}}><span>IMG_SM</span></li>
+                        <li style={{width:'15%'}}><span>NAME</span></li>
+                        <li style={{width:'5%'}}><span>PRICE</span></li>
+                        <li style={{width:'40%'}}><span>DETAIL</span></li>
+                        <li style={{width:'20%'}}><span>MATERIAL</span></li>
                     </ul>
+                    {
+                        this.props.state.foodList.map((item,index) => (
+                            <ol className={styles.table_body} key={item.did}>
+                                <li style={{width:'5%'}}><span>{item.did}</span></li>
+                                <li style={{width:'10%'}}><span><img src={`http://www.kfl.com/img/${item.img_sm}`}/></span></li>
+                                <li style={{width:'15%'}}><span>{item.name}</span></li>
+                                <li style={{width:'5%'}}><span>{item.price}</span></li>
+                                <li style={{width:'40%'}}><span>{item.detail}</span></li>
+                                <li style={{width:'20%'}}><span>{item.material}</span></li>
+                            </ol>
+                        ))
+                    }
                 </div>
             </div>
         )

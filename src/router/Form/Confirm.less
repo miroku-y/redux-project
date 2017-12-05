@@ -1,0 +1,51 @@
+@keyframes side_in{
+    0%   {margin-left: 100%;}
+    20%  {margin-left: 80%;}
+    40%  {margin-left: 60%;}
+    80%  {margin-left: 20%;}
+    100% {margin-left: 0;}
+}
+.confirm{
+    animation:side_in .3s;
+    background-color:#fff;
+    height:87%;
+    overflow: hidden;
+    .form_box{
+        width:96.5%;
+        margin:0 auto;
+        form{
+            div{
+                width: 50%;
+                margin:0 auto;
+                height: 3rem;
+            }
+            div label span{
+                width:20%;
+                display:inline-block;
+            }
+            div label input{
+                width:79%;
+                height: 1.5rem;
+            }
+        }
+        p{
+            display: flex;
+            justify-content: center;
+        }
+        p .btn{
+            width:6rem;
+            background-color:#1991FF;
+            border:none;
+            border-radius:5px;
+            color:#fff;
+            height: 2rem;
+            display: inline-block;
+        }
+        p a{
+            text-decoration: none;
+            line-height: 2rem;
+            text-align: center;
+            margin-right: 1rem;
+        }
+    }
+}
