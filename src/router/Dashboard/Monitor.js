@@ -4,26 +4,33 @@ import Title from '../../components/commont/Title'
 import { connect } from 'react-redux'
 import * as actions from '../../redux/action/index'
 import * as servers from '../../servers/Monitor'
+import Page from '../../components/commont/Page'
 
 class Monitor extends React.Component{
     constructor(props){
         super(props);
     }
-    componentDidMount (){
-        console.log(this,this.props.state.firstIndex,'8888888888888');
-            // this.props.getFoodListAction(actions.getTest(this.props.dispatch,this.props.state.firstIndex,this.props.state.secondIndex));
-        
+    state={
+        init:true
     }
     getListFun = (firstIndex,secondIndex) => {
-        servers.getFoodListFun({}).then((res) => {
-            this.props.dispatch(actions.saveReducer(res.data,firstIndex,secondIndex))
+        let {page,pageSize} = this.props.state.monitorPages;
+        servers.getFoodListFun({page:page,pageSize:pageSize}).then((res) => {
+            this.setState({
+                init:false,
+            });
+            if(res.code == -1){
+                alert('参数未传入');
+            }else{
+                // console.log(this.props)
+                this.props.editTotalAction(res.data.total, firstIndex, secondIndex,pageSize);
+                this.props.dispatch(actions.saveReducer(res.data,firstIndex,secondIndex))
+            }
         })
-        // this.props.getFoodListAction(actions.getTest(this.props.dispatch,firstIndex,secondIndex));
     };
     render(){
         // debugger;
-        console.log(this.props)
-        if(this.props.state.secondIndex == window.location.pathname.slice(1) && this.props.state.foodList.length == 0){
+        if (this.props.state.secondIndex == window.location.pathname.slice(1) && this.props.state.monitorPages.foodList.length == 0&&this.state.init){
             this.getListFun(this.props.state.firstIndex,this.props.state.secondIndex)
         }
         return(
@@ -39,7 +46,7 @@ class Monitor extends React.Component{
                         <li style={{width:'20%'}}><span>MATERIAL</span></li>
                     </ul>
                     {
-                        this.props.state.foodList.map((item,index) => (
+                        this.props.state.monitorPages.foodList.map((item,index) => (
                             <ol className={styles.table_body} key={item.did}>
                                 <li style={{width:'5%'}}><span>{item.did}</span></li>
                                 <li style={{width:'10%'}}><span><img src={`http://www.kfl.com/img/${item.img_sm}`}/></span></li>
@@ -50,6 +57,7 @@ class Monitor extends React.Component{
                             </ol>
                         ))
                     }
+                    <Page pages={this.props.monitorPages}/>    
                 </div>
             </div>
         )
@@ -63,7 +71,19 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {
         dispatch,
-        getFoodListAction:(params) => dispatch({type:params})
+        getFoodListAction:(params) => dispatch({type:params}),
+        editTotalAction: (total, firstIndex, secondIndex, page, pageSize) => {
+            let totalPamase = {
+                'firstIndex':firstIndex,
+                'secondIndex':secondIndex,
+                'monitorPages':{
+                    'total': total,
+                    'page': page,
+                    'pageSize': pageSize,
+                }
+            }
+            dispatch({ type: totalPamase })
+        },
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Monitor);

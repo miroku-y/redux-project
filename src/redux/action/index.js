@@ -31,9 +31,8 @@ export const saveReducer = (data,firstIndex,secondIndex) => ({
 // 
 //     }
 // }
-export const getTest = (dispatch,firstIndex,secondIndex) => {
+export const getTest = (dispatch,firstIndex,secondIndex,page) => {
     servers.getFoodListFun({}).then((res) => {
-        console.log(res)
         dispatch(saveReducer(res.data,firstIndex,secondIndex))
     })
 }

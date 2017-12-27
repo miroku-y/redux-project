@@ -6,11 +6,31 @@ const initialState = {
     secondIndex:'basic-table',
     firstIndex:'table',
     stepFormPage:'',
-    foodList:[],
+    monitorPages:{
+        foodList:[],
+        page: '1',
+        pageSize: '2',
+        total: '',
+    }
 }
 export const reducer = (state = initialState,action) => {
     console.log(action,'111')
     
+    //修改翻页信息（total）
+    // if(action.type.hasOwnProperty('total')){
+    //     debugger;
+    //     let { total, firstIndex, secondIndex} = action.type;
+    //     return {
+    //         ...state,
+    //         monitorPages:{
+    //             total,
+    //             firstIndex, 
+    //             secondIndex,
+    //             page:action.type.page,
+    //             pageSize:action.type.pageSize,
+    //         }
+    //     }
+    // }
     //F5刷新时用
     if(action.type.hasOwnProperty('lineHeight')){
         return {
@@ -95,12 +115,23 @@ export const reducer = (state = initialState,action) => {
             }
         //渲染监控页面
         case 'SAVE_REDUCER':
-        // debugger;
+            // debugger;
+            let {
+                firstIndex,
+                secondIndex,
+            } = action.data;
+            let { list, page,total,pageSize}= action.data.data;
+            console.log(action);
             return {
                 ...state,
-                firstIndex:action.data.firstIndex,
-                secondIndex:action.data.secondIndex,
-                foodList:action.data.data.list,
+                firstIndex: firstIndex,
+                secondIndex:secondIndex,
+                monitorPages:{
+                    page: page,
+                    foodList: list,
+                    total: total,
+                    pageSize: pageSize,
+                }
             }
         default:
             return initialState;

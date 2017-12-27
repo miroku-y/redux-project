@@ -5,7 +5,7 @@
      
 #   说明
     >   是一个PC端的后台管理项目
-    >   引用用reacta作为js框架，引用react-router@4作为页面路由
+    >   引用react、react-router@4
     >   引用redux进行状态管理
     >   引用mockjs进行数据渲染
     >   引用webpack进行打包编译，编码规范参照es6/7
@@ -13,3 +13,19 @@
 #   项目运行
     >   cnpm install
     >   npm run dev
+
+#   项目概览
+    >   登录页面实现能校验错误信息；注册页面能够校验重复信息，将正确注册信息存入
+   <img src="https://github.com/yangdongMC/redux-project/blob/master/src/images/project1.png"/>
+
+    >   基础表格页面,使用mock构建的虚拟数据
+   <img src="https://github.com/yangdongMC/redux-project/blob/master/src/images/project2.png"/>  
+
+    >   分步表单页面,使用react-router@4实现嵌套子页面进行表单提交
+   <img src="https://github.com/yangdongMC/redux-project/blob/master/src/images/project3.png"/>
+
+    >   数据分析页面,使用echarts图表进行数据展示
+   <img src="https://github.com/yangdongMC/redux-project/blob/master/src/images/project4.png"/>
+
+    >   监控页面,实现分页功能
+   <img src="https://github.com/yangdongMC/redux-project/blob/master/src/images/project5.png"/>
