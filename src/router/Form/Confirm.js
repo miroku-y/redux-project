@@ -31,7 +31,8 @@ class Confirm extends React.Component{
                     {/* <button>上一步</button> */}
                     <p>
                         <Link to="/step-form" className={styles.btn}>上一步</Link>
-                        <button className={styles.btn}>提交</button>
+                        {/* <button className={styles.btn}>提交</button> */}
+                        <Link to="/step-form/done" className={styles.btn}>提交</Link>
                     </p>
                 </div>  
             </div>

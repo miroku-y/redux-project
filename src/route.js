@@ -11,7 +11,8 @@ import BasicTable from './router/Table/BasicTable';
 import Login from './router/User/Login';
 import Register from './router/User/Register';
 import Main from './components/Layout/Main';
-import Title from './components/commont/Title'
+import Title from './components/commont/Title';
+import Done from './router/Form/Done';
 
 // const history = createHistory();
 const Routes = (
@@ -36,6 +37,7 @@ const Routes = (
                             </div>
                             <Switch>
                                 <Route path="/step-form/confirm" component={Confirm}></Route>
+                                <Route path="/step-form/done" component={Done}></Route>
                                 <Route path="/step-form" component={StepForm}></Route>
                             </Switch>
                         </div>
